@@ -1,0 +1,36 @@
+<div class="diagnose-container">
+  <h2>ゲーム診断</h2>
+
+  <%= form_with model: @mygame, url: result_mygames_path, method: :post, data: { turbo: false } do |f| %>
+
+    <div>
+      <%= f.label :question1, "どんなジャンルのゲームが好き？" %><br>
+      <%= f.select :question1, [
+        ["アクション", "アクション"], 
+        ["RPG", "RPG"], 
+        ["シミュレーション", "シミュレーション"],
+        ["アドベンチャー", "アドベンチャー"],
+        ["パーティー", "パーティー"],
+        ["シューティング", "シューティング"],
+        ["パズル", "パズル"],
+      ], prompt: "選択してください" %>
+    </div>
+
+    <div>
+      <%= f.label :question2, "遊び方のスタイルは？" %><br>
+      <%= f.select :question2, ["短時間でサクッと", "じっくり遊びたい"], prompt: "選択してください" %>
+    </div>
+
+    <div>
+      <%= f.label :question3, "プレイ人数は？" %><br>
+      <%= f.select :question3, ["1人プレイ", "複数人プレイ"], prompt: "選択してください" %>
+    </div>
+
+    <div>
+      <%= f.label :question4, "どんな雰囲気のゲームが好き？" %><br>
+      <%= f.select :question4, ["リアル", "ファンタジー", "カジュアル"], prompt: "選択してください" %>
+    </div>
+
+    <%= f.submit "診断する" %>
+  <% end %>
+</div>

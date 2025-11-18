@@ -1,0 +1,38 @@
+/* ★ 全体の黒背景＋白文字 */
+.diagnose-container {
+  width: 60%;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #000;
+  border: 3px solid #4a90e2;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  font-family: 'Press Start 2P', sans-serif; /* レトロゲーム風フォント */
+}
+
+/* 質問部分 */
+.diagnose-container label {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.diagnose-container select {
+  width: 60%;
+  padding: 10px;
+  margin: 10px 0 30px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* 診断ボタン */
+.diagnose-container input[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}

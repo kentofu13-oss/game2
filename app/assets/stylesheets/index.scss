@@ -1,0 +1,41 @@
+.mygames-container {
+  width: 50%;
+  margin: 10px auto;
+}
+h3 {
+  width: 100px;
+  margin: 30px auto;
+  text-align: center;
+}
+.mygame {
+  border-top: solid #00acee;
+  margin-top: 10px;
+  padding-top: 20px;
+}
+.main-box {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mygames-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 横に3つ */
+  gap: 20px; /* アイテム間の余白 */
+  margin-top: 20px;
+}
+
+.mygame {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.mygame img {
+  width: 100%;
+  height: 180px;     /* お好みの高さに変更してOK */
+  object-fit: cover; /* これが重要！画像を切り抜いて枠にフィット */
+  border-radius: 5px;
+}

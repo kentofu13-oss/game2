@@ -1,0 +1,191 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  background-color: #000;
+  background-image:
+    radial-gradient(#444 1px, transparent 1px),
+    radial-gradient(#444 1px, transparent 1px);
+  background-position: 0 0, 5px 5px;
+  background-size: 10px 10px;
+}
+header {
+  background-color: #000000;
+  height: 80px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a {
+  color: white; 
+  text-decoration: none; 
+}
+header h1 {
+  color: white;
+  margin-left: 20px;
+}
+.header-list {
+  display: flex;
+  align-items: center;
+}
+header ul {
+  display: flex;
+}
+header li {
+  list-style: none;
+  margin-right: 40px;
+}
+
+/* === カード全体を横並びに === */
+.mygames-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;   /* ← これで中央揃え */
+  max-width: 900px;          /* ← 260px × 3 + 余白で中央に固定 */
+  margin: 0 auto;            /* ← これでページ中央へ */
+  padding: 20px;
+}
+
+/* === 個々のカード === */
+.mygame-card {
+  width: 260px;        /* 画像サイズに合わせる */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.mygame-card:hover {
+  transform: translateY(-5px);
+}
+
+/* === 画像部分 === */
+.card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* === タイトル === */
+.card-title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* === 詳細ボタン === */
+.details-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: #d70000;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.details-button:hover {
+  background: #a00000;
+}
+
+h1, h3 {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* ======== ページ上部のボタンを横並びに中央配置 ======== */
+.top-actions {
+  display: flex;
+  gap: 20px;
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.top-actions a {
+  padding: 10px 20px;
+  background: #d70000;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.top-actions a:hover {
+  background: #a00000;
+}
+
+
+/* ======== タグ一覧のエリア ======== */
+.tags-area {
+  margin: 25px auto;
+  padding: 15px 20px;
+  width: 80%;
+  max-width: 800px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: white;
+}
+
+.tags-area ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.tags-area li {
+  font-size: 14px;
+}
+
+.tags-area input[type="submit"] {
+  margin-top: 15px;
+  padding: 8px 20px;
+  background: #008cff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.tags-area input[type="submit"]:hover {
+  background: #006bcc;
+}

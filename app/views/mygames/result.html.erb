@@ -1,0 +1,17 @@
+<div class="result-container">
+  <h2>診断結果</h2>
+
+  <p>あなたにおすすめのジャンルは <strong><%= @result_genre %></strong> です！</p>
+
+  <h3>おすすめタイトル</h3>
+
+  <% if @recommended_game %>
+    <p><%= @recommended_game.title %></p>
+    <%= link_to "詳細ページへ", mygame_path(@recommended_game.id), class: "btn" %>
+  <% else %>
+    <p>条件に合うゲームは見つかりませんでした。</p>
+  <% end %>
+
+  <%= link_to "もう一度診断する", diagnose_mygames_path, class: "btn" %>
+  <%= link_to "一覧に戻る", mygames_path, class: "btn" %>
+</div>

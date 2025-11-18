@@ -1,0 +1,22 @@
+.result-container {
+  width: 60%;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #000;
+  border: 3px solid #4a90e2;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.result-container a.btn {
+  display: inline-block;
+  margin: 20px;
+  padding: 12px 25px;
+  background-color: #4a90e2;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}

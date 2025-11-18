@@ -1,0 +1,32 @@
+<h1>About_Game</h1>
+<h3>ゲーム詳細</h3>
+<div class="mygame">
+  <p>ゲームタイトル: <%= @mygame.title %></p>
+  <p>ジャンル: <%= @mygame.genre %></p>
+  <p>プラットフォーム: <%= @mygame.platforms.reject(&:blank?).join(", ") %></p>
+  <p>価格: <%= @mygame.price %>円</p>
+  <p>プレイ人数: <%= @mygame.num_players %></p>
+  <% if @mygame.image.attached? %>
+    <%= image_tag url_for(@mygame.image), class: "show-image" %>
+  <% end %>
+
+  <% @mygame.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
+
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@mygame) %>
+        <% like = current_user.likes.find_by(mygame_id: @mygame.id) %>
+        <%= link_to [@mygame, like], data: {turbo_method: :delete} do %>
+          <p>いいねを取り消す</p><%= @mygame.likes.count %>
+        <% end %>
+      <% else %>
+        <%= button_to mygame_likes_path(@mygame), method: :post do %>
+          <p>いいね</p><%= @mygame.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>いいねの数 = </p><%= @mygame.likes.count %>
+    <% end %>
+
+</div>

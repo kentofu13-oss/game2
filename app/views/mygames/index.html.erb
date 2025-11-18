@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<h1>About_Game</h1>
+<h3>一覧ページ</h3>
+
+<div class="top-actions">
+  <%= link_to "新規投稿へ", new_mygame_path %>
+  <%= link_to "ゲーム診断へ", diagnose_mygames_path, class: "btn btn-diagnose" %>
+</div>
+
+<div class="mygames-container">
+  <% @mygames.each do |t| %>
+    <div class="mygame-card">
+      
+      <% if t.image.attached? %>
+        <div class="card-image">
+          <%= image_tag t.image, size: '250x200' %>
+        </div>
+      <% end %>
+
+      <div class="card-title">
+        <%= t.title %>
+      </div>
+
+      <div class="card-button">
+        <%= link_to "詳細へ", mygame_path(t.id), class: "details-button" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+
+<br>
+<div class="tags-area">
+  <%= form_tag({controller:"mygames",action:"index"}, method: :get) do %>
+    <ul>
+    <% Tag.all.each do |t| %>
+      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    </ul>
+    <%= submit_tag '検索' %>
+  <% end %>
+</div>

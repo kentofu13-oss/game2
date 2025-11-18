@@ -1,0 +1,106 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<h1>(About_Game)</h1>
+<h3>新規投稿ページ</h3>
+
+<div class="post-container">
+  <div class="title">
+    新規投稿
+  </div>
+
+  <% if @mygame.errors.any? %>
+    <div class="error-messages">
+      <h3>入力エラーがあります:</h3>
+      <ul>
+        <% @mygame.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @mygame, local: true do |f| %>
+
+    <div class="field">
+      <%= f.label :title, "タイトル" %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :genre, "ジャンル"  %><br>
+      <%= f.select :genre, 
+      [["アクション", "アクション"], 
+      ["RPG", "RPG"], 
+      ["シミュレーション", "シミュレーション"],
+      ["アドベンチャー", "アドベンチャー"],
+      ["パーティー", "パーティー"],
+      ["シューティング", "シューティング"],
+      ["パズル", "パズル"]], include_blank: "選択して下さい" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :platforms, "対応プラットフォーム" %><br>
+      <%= f.collection_check_boxes(:platforms, 
+        [["Switch", "Switch"],
+        ["PS5", "PS5"],
+        ["PC", "PC"],
+        ["スマートフォン", "スマートフォン"]],
+        :last, :first) do |p| %>
+        <div class="form-check">
+          <%= p.label class: 'form-check-label' do %>
+            <%= p.check_box class: 'form-check-input' %>
+            <%= p.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price, "価格(円)"  %><br>
+      <%= f.number_field :price %>
+    </div>
+
+    <div class="field">
+      <%= f.label :num_players, "プレイ人数"  %><br>
+      <%= f.select :num_players,
+        [["1人プレイ", "1人プレイ"],
+        ["複数人プレイ", "複数人プレイ"]] %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :tag_ids, "特徴タグ" %><br>
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class='form-check'>
+          <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <label for="mygame_image">画像</label><br>
+
+      <label class="file-upload-label">
+        画像を選択
+        <%= f.file_field :image, id: "mygame_image", class: "file-input" %>
+      </label>
+
+      <span id="file-name" class="file-name">選択されていません</span>
+    </div>
+
+    <%= f.submit "投稿する" %>
+  <% end %>
+
+  <br>
+  <%= link_to "一覧に戻る", mygames_path, style: "color:#00ffcc;" %>
+
+</div>
+
+<script>
+document.getElementById("mygame_image").addEventListener("change", function(){
+  const fileName = this.files.length > 0 ? this.files[0].name : "選択されていません";
+  document.getElementById("file-name").innerText = fileName;
+});
+</script>
