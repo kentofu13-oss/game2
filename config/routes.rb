@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
 
   root 'mygames#index'
+
+  get '/favicon.ico', to: ->(_) { [204, {}, []] }
 end
