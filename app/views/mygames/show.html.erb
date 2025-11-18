@@ -7,7 +7,9 @@
   <p>価格: <%= @mygame.price %>円</p>
   <p>プレイ人数: <%= @mygame.num_players %></p>
   <% if @mygame.image.attached? %>
-    <%= image_tag url_for(@mygame.image), class: "show-image" %>
+    <div class="image-wrapper">
+      <%= image_tag url_for(@mygame.image), class: "show-image" %>
+    </div>
   <% end %>
 
   <% @mygame.tags.each do |tag| %>
